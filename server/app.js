@@ -27,7 +27,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 20}))
 app.use(session({secret: process.env.SECRET_KEY, resave: false, saveUninitialized: true,}));
 app.use('/users', isAuthenticated, users);
-app.use('/posts', isAuthenticated, posts);
+// app.use('/posts', isAuthenticated, posts);
 
 app.post("/login", login);
 

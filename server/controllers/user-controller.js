@@ -25,7 +25,7 @@ export async function createUser(req, res){
 export async function deleteUser(req, res){
     try{
         const {user} = req;
-        const deleted = await User.findOneAndDelete({_id})
+        const deleted = await User.findOneAndDelete({_id: user["_id"]})
         deleted ? res.status(202).json({message: true}) : res.status(403).json({message: false});
     }catch(e){
         res.status(500).json({ message: 'Server Error', error: e });
