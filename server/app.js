@@ -2,6 +2,7 @@ import posts from './routes/post-route.js';
 import users from './routes/user-route.js';
 import login from './middleware/login.js';
 import passportSetup from './config/passportSetup.js';
+import isAuthenticated from './middleware/auth.js';
 
 import bodyParser from 'body-parser';
 import cors from 'cors'
@@ -31,4 +32,4 @@ app.use('/users', isAuthenticated, users);
 
 app.post("/login", login);
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, ()=>{});
