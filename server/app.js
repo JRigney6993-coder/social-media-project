@@ -24,9 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 20}))
 app.use(session({secret: process.env.SECRET_KEY, resave: false, saveUninitialized: true,}));
+app.use(passport.session());
 app.use('/users', isAuthenticated, users);
 // app.use('/posts', isAuthenticated, posts);
 
