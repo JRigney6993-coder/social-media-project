@@ -18,7 +18,7 @@ export async function createUser(req, res){
         await newPerson.save();
         res.status(200).json({success: true})
     } catch (error) {
-        res.status(500).json({success: false})
+        res.status(500).json({success: false, error: error.message})
     }
 }
 
