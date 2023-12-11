@@ -14,7 +14,7 @@ import passport from 'passport';
 import path from 'path';
 import { fileURLToPath } from 'url';
 dotenv.config();
-mongoose.connect(process.env.MONGO_URI);
+mongoose.createConnection(process.env.MONGO_URI);
 passportSetup(passport)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

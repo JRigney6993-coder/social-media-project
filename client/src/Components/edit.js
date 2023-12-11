@@ -17,8 +17,6 @@ export default function Edit(){
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(update)
         })
-        var result = await getData.json();
-        console.log(result);
         //const postData = await fetch("http://localhost:5000/docs", {
         //    method: "POST",
         //    headers: { "Content-Type": "application/json" },

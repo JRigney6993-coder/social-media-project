@@ -12,6 +12,7 @@ const userSchema = new Schema({
         type: String,
         validate:{validator: (value)=>{return typeof value === "string"}},
         required: true,
+        unique: true,
         trim: true
     },
     "email": {
@@ -35,11 +36,12 @@ const userSchema = new Schema({
         type: Array,
         default: []
     }
-}, {database: "Users"}, { collection: 'Default'})
+}, { collection: 'Default'})
 
 userSchema.methods.validPassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const myDB = mongoose.connection.useDb('Users');
+const User = myDB.model('User', userSchema);
 export default User

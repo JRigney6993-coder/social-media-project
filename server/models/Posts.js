@@ -33,7 +33,8 @@ const postSchema = new Schema({
         required: true,
         trim: true
     }
-}, {database: "Posts"}, { collection: 'Threads'})
+}, { collection: 'Threads'})
 
-const Post = mongoose.model('User', postSchema);
+const myDB = mongoose.connection.useDb('Posts');
+const Post = myDB.model('Post', postSchema);
 export default Post

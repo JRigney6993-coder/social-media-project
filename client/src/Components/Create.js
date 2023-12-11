@@ -12,14 +12,13 @@ const Create = () => {
     async function createUser(e){
         e.preventDefault();
         const update = {...form}
-        fetch("http://localhost:5000/users", {
+        await fetch("http://localhost:5000/users", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(update)
-        }).then(()=> {
-            updateForm({name: "", user_name: "", email: "", password: ""})
-            navigate("/home")
         })
+        updateForm({name: "", user_name: "", email: "", password: ""})
+        navigate("/home")
     }
     return (
         <div className="mx-auto w-25 h-50 d-flex flex-column border border-primary p-3">
