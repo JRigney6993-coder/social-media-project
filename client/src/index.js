@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import About from './Components/about';
-import Edit from './Components/edit';
+import Edit from './Components/Edit';
 import Create from './Components/Create';
 import Home from './Components/home';
 import Navbar from './Components/navbar';
