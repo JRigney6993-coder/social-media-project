@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import About from './Components/about';
 import Edit from './Components/edit';
+import Create from './Components/Create';
 import Home from './Components/home';
 import Navbar from './Components/navbar';
 import "bootstrap/dist/css/bootstrap.css";
@@ -20,6 +21,7 @@ root.render(
           <Route path="/home" Component={Home} />
           <Route path="/about" Component={About} />
           <Route path="/edit" Component={Edit} />
+          <Route path="/create-account" Component={Create}/>
         </Routes>
       </div>
     </BrowserRouter>
