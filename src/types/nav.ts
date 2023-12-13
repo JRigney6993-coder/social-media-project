@@ -1,6 +1,7 @@
 export interface NavItem {
-    title: string
-    href?: string
+    component: string
+    path?: string
     disabled?: boolean
     external?: boolean
+    visible?: boolean
   }

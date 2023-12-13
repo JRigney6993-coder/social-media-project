@@ -19,16 +19,16 @@ export function MainNav({ items }: MainNavProps) {
         <nav className="flex gap-6">
           {items?.map(
             (item, index) =>
-              item.href && (
+              item.path && item.visible && (
                 <a
                   key={index}
-                  href={item.href}
+                  href={item.path}
                   className={cn(
                     "flex items-center text-sm font-medium text-muted-foreground",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >
-                  {item.title}
+                  {item.component}
                 </a>
               )
           )}

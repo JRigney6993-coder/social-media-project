@@ -8,19 +8,19 @@ import { siteConfig } from "@/config/site"
 
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme, theme } = useTheme();
 
   return (
     <>
       <a
-        href={siteConfig.links.login}
+        href={siteConfig.mainNav[0].path}
         className={buttonVariants()}>Login</a>
       <a
-        href={siteConfig.links.signup}
+        href={siteConfig.mainNav[1].path}
         className={buttonVariants({ variant: "outline" })}>Signup</a>
     <Button
       variant="ghost"
-      size="sm"
+      size="lg"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <Icons.sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
