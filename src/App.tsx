@@ -19,9 +19,6 @@ const componentMap: { [key: string]: React.ComponentType } = {
   'Threads': ThreadsPage,
 };
 
-console.log('componentMap', componentMap);
-console.log('siteConfig.mainNav', siteConfig.mainNav);
-
 function getRoutes(items: NavItem[]) {
   return items.map(item => {
     const Component = componentMap[item.component];
@@ -32,7 +29,6 @@ function getRoutes(items: NavItem[]) {
     return { path: item.path, element: <Component /> };
   }).filter(Boolean); 
 }
-
 
 const router = createBrowserRouter(getRoutes(siteConfig.mainNav));
 
