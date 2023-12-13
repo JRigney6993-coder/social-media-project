@@ -2,6 +2,7 @@ import posts from './routes/post-route.js';
 import users from './routes/user-route.js';
 import login from './middleware/login.js';
 import passportSetup from './config/passportSetup.js';
+import isAuthenticated from './middleware/auth.js';
 
 
 import bodyParser from 'body-parser';
@@ -28,7 +29,7 @@ app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 20}
 app.use(session({secret: process.env.SECRET_KEY, resave: false, saveUninitialized: true,}));
 app.use(passport.session());
 app.use('/users', users);
-// app.use('/posts', isAuthenticated, posts);
+app.use('/posts', isAuthenticated, posts);
 
 app.post("/login", login);
 
