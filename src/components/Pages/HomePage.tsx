@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants, Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -15,16 +15,16 @@ export default function Home() {
       </div>
       <div className="flex gap-4">
         <a
-          href={siteConfig.links.docs}
-          className={buttonVariants()}
+          href={siteConfig.links.github}
+          className={buttonVariants({ variant: "default"})} 
         >
-          Documentation
+          Get Started!
         </a>
         <a
           href={siteConfig.links.github}
           className={buttonVariants({ variant: "outline" })}
         >
-          GitHub
+          About Us!
         </a>
       </div>
     </section>

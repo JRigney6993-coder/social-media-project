@@ -3,6 +3,13 @@ import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { buttonVariants } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+} from "@/components/ui/dialog"
+
+import Signup from '@/components/Pages/SignupDialog';
 
 import { siteConfig } from "@/config/site"
 
@@ -12,12 +19,25 @@ export function ThemeToggle() {
 
   return (
     <>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">Edit Profile</Button>
+          <Signup/>
+        </DialogTrigger>
+        <DialogContent>
+          <Signup />
+        </DialogContent>
+      </Dialog>
       <a
         href={siteConfig.mainNav[0].path}
         className={buttonVariants()}>Login</a>
-      <a
-        href={siteConfig.mainNav[1].path}
-        className={buttonVariants({ variant: "outline" })}>Signup</a>
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">Edit Profile</Button>
+          <Signup />
+        </DialogTrigger>
+      </Dialog>
     <Button
       variant="ghost"
       size="lg"

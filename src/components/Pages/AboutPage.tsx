@@ -9,7 +9,7 @@ export default function AboutPage() {
           About us
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          This was a project made in 4 days by Jacob Rigney and Andrew Murphy. We used, React, Typescript, Vite, Next.js, and mongodb to create this social platform.
+          This was a project finished in 4 days by Jacob Rigney and Andrew Murphy. We used, React + Typescript for frontend components and Vite + Node.js for our server and backend router. The database we used was MongoDB due to its built in encryption.
         </p>
       </div>
       <div className="flex gap-4">
