@@ -32,7 +32,26 @@ const postSchema = new Schema({
         }},
         required: true,
         trim: true
+    },
+    "author":{
+        type: String,
+        validate:{validator: (value)=>{return typeof value === "string"}},
+        required: true,
+        trim: true
+    },
+    "author_link":{
+        type: String,
+        validate:{validator: (value)=>{return typeof value === "string"}},
+        required: true,
+        trim: true
+    },
+    "create_date":{
+        type: String,
+        validate:{validator: (value)=>{return typeof value === "string"}},
+        required: true,
+        trim: true
     }
+
 }, { collection: 'Threads'})
 
 const myDB = mongoose.connection.useDb('Posts');
