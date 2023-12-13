@@ -6,16 +6,6 @@ export const siteConfig = {
         "Grape chat is a fun practice project for making a social media using, next.js, react, typescript, and vite.",
     mainNav: [
         {
-            component: "Login",
-            path: "/login",
-            visible: false,
-        },
-        {
-            component: "Signup",
-            path: "/Signup",
-            visible: false,
-        },
-        {
             component: "Home",
             path: "/",
             visible: true,

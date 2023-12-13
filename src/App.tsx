@@ -4,7 +4,7 @@ import Layout from './Layout';
 
 import HomePage from '@/components/Pages/HomePage';
 import AboutPage from '@/components/Pages/AboutPage';
-import LoginPage from '@/components/Pages/LoginPage';
+import LoginPage from '@/components/Pages/LoginDialog';
 import SignupPage from '@/components/Pages/SignupDialog';
 import ThreadsPage from '@/components/Pages/ThreadsPage';
 
@@ -14,8 +14,6 @@ import { NavItem } from '@/types/nav';
 const componentMap: { [key: string]: React.ComponentType } = {
   'Home': HomePage,
   'About': AboutPage,
-  'Login': LoginPage,
-  'Signup': SignupPage,
   'Threads': ThreadsPage,
 };
 

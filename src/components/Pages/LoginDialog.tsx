@@ -8,12 +8,12 @@ import {Label} from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
-export default function Signup() {
+export default function Login() {
   return (
     <><DialogHeader>
-      <DialogTitle>Signup</DialogTitle>
+      <DialogTitle>Login</DialogTitle>
       <DialogDescription>
-        Remember to keep your password is secure!
+        Forgot your password? <a>Click here!</a>
       </DialogDescription>
     </DialogHeader><div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">
@@ -22,14 +22,6 @@ export default function Signup() {
           </Label>
           <Input
             id="username"
-            className="col-span-3" />
-        </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="email" className="text-right">
-            Email
-          </Label>
-          <Input
-            id="email"
             className="col-span-3" />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
@@ -42,8 +34,7 @@ export default function Signup() {
             type="password" />
         </div>
       </div><DialogFooter>
-        <Button type="submit">Continue</Button>
+        <Button type="submit">Submit</Button>
       </DialogFooter></>
   )
 }
-

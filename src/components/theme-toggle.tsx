@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dialog"
 
 import Signup from '@/components/Pages/SignupDialog';
+import Login from '@/components/Pages/LoginDialog';
+
 
 import { siteConfig } from "@/config/site"
 
@@ -19,25 +21,23 @@ export function ThemeToggle() {
 
   return (
     <>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
-          <Signup/>
-        </DialogTrigger>
-        <DialogContent>
-          <Signup />
-        </DialogContent>
-      </Dialog>
-      <a
-        href={siteConfig.mainNav[0].path}
-        className={buttonVariants()}>Login</a>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="default">Login</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <Login />
+          </DialogContent>
+        </Dialog>
 
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
-          <Signup />
-        </DialogTrigger>
-      </Dialog>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Signup</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <Signup />
+          </DialogContent>
+        </Dialog>
     <Button
       variant="ghost"
       size="lg"
