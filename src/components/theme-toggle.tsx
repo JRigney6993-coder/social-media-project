@@ -5,31 +5,43 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 
-import Signup from '@/components/Pages/SignupDialog';
-import Login from '@/components/Pages/LoginDialog';
+import Signup from '@/components/Dialogs/SignupDialog';
+import Login from '@/components/Dialogs/LoginDialog';
+import Confirm from '@/components/Dialogs/ConfirmationDialog';
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isConfirmOpen, setConfirmOpen] = useState(false);
 
-  // Check if user is logged in
   useEffect(() => {
-    if (localStorage.getItem('userToken')) {
-      setIsLoggedIn(!!isLoggedIn);
-    }
+    // if (localStorage.getItem('userToken')) {
+    //   setIsLoggedIn(true);
+    // } else {
+    //   setIsLoggedIn(false);
+    // }
   }, []);
 
-  // Function to handle logout
   const handleLogout = () => {
+    setConfirmOpen(false);
     localStorage.removeItem('userToken');
     setIsLoggedIn(false);
-    console.log('Put logout post here')
+    console.log('Logout successful');
   };
 
   return (
     <>
       {isLoggedIn ? (
-        <Button variant="outline" onClick={handleLogout}>Logout</Button>
+        <>
+          <Button variant="outline" onClick={() => setConfirmOpen(true)}>Logout</Button>
+          <Dialog open={isConfirmOpen} onOpenChange={setConfirmOpen}>
+            <DialogContent>
+              <Confirm assignment="You will be logged out. Proceed?" />
+              <Button variant="outline" onClick={handleLogout}>Yes</Button>
+              <Button variant="outline" onClick={() => setConfirmOpen(false)}>No</Button>
+            </DialogContent>
+          </Dialog>
+        </>
       ) : (
         <>
           <Dialog>

@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { buttonVariants, Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import Signup from '@/components/Pages/SignupDialog';
+import Signup from '@/components/Dialogs/SignupDialog';
 
 export default function Home() {
   return (
