@@ -1,5 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { buttonVariants, Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import Signup from '@/components/Pages/SignupDialog';
 
 export default function Home() {
   return (
@@ -14,14 +16,16 @@ export default function Home() {
         </p>
       </div>
       <div className="flex gap-4">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="default">Get Started!</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <Signup />
+            </DialogContent>
+          </Dialog>
         <a
-          href={siteConfig.links.github}
-          className={buttonVariants({ variant: "default"})} 
-        >
-          Get Started!
-        </a>
-        <a
-          href={siteConfig.links.github}
+          href={siteConfig.mainNav[1].path}
           className={buttonVariants({ variant: "outline" })}
         >
           About Us!
