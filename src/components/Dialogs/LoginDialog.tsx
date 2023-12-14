@@ -13,7 +13,7 @@ export default function Login() {
     <><DialogHeader>
       <DialogTitle>Login</DialogTitle>
       <DialogDescription>
-        Forgot your password? <a>Click here!</a>
+        Forgot your password? <a className="text-purple" href="/">Click here!</a>
       </DialogDescription>
     </DialogHeader><div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">

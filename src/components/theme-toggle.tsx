@@ -8,6 +8,7 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import Signup from '@/components/Dialogs/SignupDialog';
 import Login from '@/components/Dialogs/LoginDialog';
 import Confirm from '@/components/Dialogs/ConfirmationDialog';
+import Settings from '@/components/Dialogs/SettingsDialog';
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
@@ -33,6 +34,7 @@ export function ThemeToggle() {
     <>
       {isLoggedIn ? (
         <>
+          <Button variant="default">Settings</Button>
           <Button variant="outline" onClick={() => setConfirmOpen(true)}>Logout</Button>
           <Dialog open={isConfirmOpen} onOpenChange={setConfirmOpen}>
             <DialogContent>

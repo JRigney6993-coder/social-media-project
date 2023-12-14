@@ -32,7 +32,6 @@ function App() {
   return (
     <Layout>
       <RouterProvider router={router} />
-      
     </Layout>
   );
 }
