@@ -20,11 +20,6 @@ passportSetup(passport)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:3000",
-  methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -32,9 +27,13 @@ app.use(passport.initialize());
 app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 20}))
 app.use(session({secret: process.env.SECRET_KEY, resave: false, saveUninitialized: true,}));
 app.use(passport.session());
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use('/users', users);
 app.use('/posts', isAuthenticated, posts);
 
+app.get("/", isAuthenticated, (req, res) => {
+  res.status(200).json({success: true});
+})
 app.post("/login", login);
 
 app.listen(process.env.PORT, ()=>{});

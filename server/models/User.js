@@ -36,12 +36,12 @@ const userSchema = new Schema({
     "sort": {
         type: Array,
         default: []
-    }
+    },
 }, { collection: 'Default'})
 
-userSchema.methods.validPassword = function (password) {
+userSchema.method("validPassword", function (password) {
   return bcrypt.compare(password, this.password);
-};
+});
 
 const myDB = mongoose.connection.useDb('Users');
 const User = myDB.model('User', userSchema);

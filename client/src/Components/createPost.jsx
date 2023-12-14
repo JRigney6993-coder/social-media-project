@@ -10,8 +10,8 @@ const CreatePost = () => {
         e.preventDefault();
         var response = await fetch("http://localhost:5000/posts", {
             method: "POST",
-            credentials: 'include',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify({...form})
         })
         var result = await response.json();

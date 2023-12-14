@@ -15,6 +15,7 @@ export default function App() {
     const getData = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify({...form})
     })
     const pass = await getData.json();
@@ -36,7 +37,6 @@ export default function App() {
                     id="email"
                     value={form.email}
                     placeholder="Enter email"
-                    maxLength="15"
                     onChange={(e) => updateForm({ email: e.target.value })}
                 />
                 <br />
