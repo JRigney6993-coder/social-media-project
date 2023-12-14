@@ -11,11 +11,11 @@ export default (passport) => {
     })
   )
   passport.serializeUser((user, done) => {
-    done(null, user["_id"]);
+    done(null, user.email);
   });
       
-  passport.deserializeUser((_id, done) => {
-    User.findOne({ _id })
+  passport.deserializeUser((email, done) => {
+    User.findOne({ email })
     .then(personAccount => {
         if (personAccount) return personAccount;
       })

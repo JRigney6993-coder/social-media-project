@@ -19,7 +19,8 @@ const userSchema = new Schema({
         type: String,
         validate:{validator: (value)=>{return typeof value === "string"}},
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
     "password": {
         type: String,
