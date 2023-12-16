@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import passport from 'passport';
 
 export default function login(req, res){
