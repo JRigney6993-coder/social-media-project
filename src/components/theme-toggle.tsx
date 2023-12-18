@@ -16,11 +16,11 @@ export function ThemeToggle() {
   const [isConfirmOpen, setConfirmOpen] = useState(false);
 
   useEffect(() => {
-    // if (localStorage.getItem('userToken')) {
-    //   setIsLoggedIn(true);
-    // } else {
-    //   setIsLoggedIn(false);
-    // }
+    if (localStorage.getItem('userToken')) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
   }, []);
 
   const handleLogout = () => {

@@ -60,11 +60,10 @@
   }
 }
 
-.home-gradient {
+.gradient-animation {
   background: linear-gradient(90deg, hsl(var(--background)), hsl(var(--background)), #7709EB, hsl(var(--background)), hsl(var(--background)));
   background-size: 400% 400%;
   animation: gradient 20s ease infinite;
-  /* height: 100vh; */
 }
 
 @keyframes gradient {

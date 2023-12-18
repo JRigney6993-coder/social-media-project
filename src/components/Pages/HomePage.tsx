@@ -5,7 +5,8 @@ import Signup from '@/components/Dialogs/SignupDialog';
 
 export default function Home() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10 home-gradient">
+    <div className="gradient-animation">
+    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
           Social media made perfect <br className="hidden sm:inline" />
@@ -32,5 +33,6 @@ export default function Home() {
         </a>
       </div>
     </section>
+    </div>
   )
 }
