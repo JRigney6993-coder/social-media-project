@@ -42,3 +42,29 @@ export async function getUser(req, res){
         res.status(500).json({success: false, message: e.message});
     }
 }
+
+export async function getEditUser(req, res){
+    try {
+        res.status(200).json({success: true, user: req.user});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
+}
+
+export async function updateUser(req, res){
+    try {
+        const {field, value} = req.body;
+        const {user} = req.user;
+        const updated_user = await User.findOneAndUpdate(
+            {user_name: user["user_name"]},
+            {$set: {[field]: value}},
+            {new: true}
+        )
+        if(updated_user)
+            res.status(200).json({success: true, user: updated_user});
+        else
+            res.status(404).json({success: false});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
+}

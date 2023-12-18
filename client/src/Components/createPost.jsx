@@ -1,8 +1,6 @@
-import React, {useState} from 'react'
-import { useNavigate } from "react-router";
+import React, {useState} from 'react';
 
-
-const CreatePost = ({refresh}) => {
+const CreatePost = ({}) => {
     const [form, setForm] = useState({title: "", content: "", category: ""});
     var updateForm = (value) => setForm((prev) => {return { ...prev, ...value };});
     async function createPost(e){
@@ -16,13 +14,15 @@ const CreatePost = ({refresh}) => {
         var result = await response.json();
         if(result.success){
             updateForm({title: "", content: "", category: ""})
-            refresh();
         }else{
             alert("Error");
         }
     }
   return (
-    <form onSubmit={createPost}>
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0">
+          <form onSubmit={createPost}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
             <div className="col-span-full">
@@ -96,6 +96,9 @@ const CreatePost = ({refresh}) => {
         </button>
       </div>
     </form>
+        </div>
+      </div>
+    </div>
     )
 }
 

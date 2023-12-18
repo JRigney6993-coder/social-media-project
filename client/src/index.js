@@ -23,7 +23,6 @@ root.render(
         <Routes>
           <Route path="/" exact Component={App} />
           <Route path="/home" Component={Home} />
-          <Route path="/about" Component={About} />
           <Route path="/edit" Component={Edit} />
           <Route path="/create-account" Component={Create}/>
           <Route path="/profile/:path" Component={Profile}/>
