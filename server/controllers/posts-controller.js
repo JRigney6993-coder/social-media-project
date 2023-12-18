@@ -15,6 +15,18 @@ export async function getPosts(req, res){
         res.status(500).json({success: false, error: error.message})
     }
 }
+export async function getUserPosts(req, res){
+    const {user} = req.params;
+    try {
+        var data = await Post.find({ author: user });
+        res.status(200).json({
+            success: true, 
+            content: data
+        })
+    } catch (error) {
+        res.status(500).json({success: false, error: error.message})
+    }
+}
 
 export async function makePosts(req, res){
     const {title, content, category} = req.body;

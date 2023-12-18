@@ -1,8 +1,10 @@
 import React, { useEffect, useState }  from 'react';
 import { useLocation } from 'react-router-dom';
+import Posts from './Posts';
 
 const Profile = () => {
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState({});
+  const [posts, setPosts] = useState([]);
   const location = useLocation().pathname.split('/')[2];
   useEffect(() => {
     async function getProfile(){
@@ -11,9 +13,16 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
       })
+      var userPosts = await fetch(`http://localhost:5000/posts/user/${location}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: 'include',
+      })
       var result = await fetchData.json();
-      if(result.success){
+      var result2 = await userPosts.json();
+      if(result.success && result2.success){
         setProfile(result.user)
+        setPosts(result2.content);
       }else{
         alert("No longer an account")
       }
@@ -40,6 +49,11 @@ const Profile = () => {
         <li className="border-solid border-purple-900 border rounded-md inline-block text-xs px-3 py-2 mr-2 mb-2">Node</li>
       </ul>
     </div>
+  </div>
+  <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {posts.map((post) => (
+            <Posts key={post.id} post={post}/>
+          ))}
   </div>
 </div>
   )

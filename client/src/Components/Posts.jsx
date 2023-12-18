@@ -1,10 +1,10 @@
 import React from 'react'
-const Posts = ({post, updateCategory}) => {
+const Posts = ({post}) => {
   return (
     <article key={post["_id"]} className="flex max-w-xl flex-col items-start justify-between">
       <div className="flex items-center gap-x-4 text-xs">
         <time className="text-gray-500">{post["create_date"]}</time>
-        <button onClick={updateCategory(post.category)} 
+        <button 
           className="relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium text-gray-600">
           {post.category}
         </button>
