@@ -35,9 +35,9 @@ export async function deleteUser(req, res){
 
 export async function getUser(req, res){
     try{
-        const {user} = req;
-        const account_user = await User.findOne({password: user.password});
-        account_user ? res.status(200).json({success: true}) : res.status(400).json({success: false});
+        const {person} = req.params;
+        const account_user = await User.findOne({user_name: person});
+        account_user ? res.status(200).json({success: true, user: account_user}) : res.status(400).json({success: false});
     }catch(e){
         res.status(500).json({success: false, message: e.message});
     }

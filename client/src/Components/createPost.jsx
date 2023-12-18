@@ -2,10 +2,9 @@ import React, {useState} from 'react'
 import { useNavigate } from "react-router";
 
 
-const CreatePost = () => {
+const CreatePost = ({refresh}) => {
     const [form, setForm] = useState({title: "", content: "", category: ""});
     var updateForm = (value) => setForm((prev) => {return { ...prev, ...value };});
-    const navigate = useNavigate();
     async function createPost(e){
         e.preventDefault();
         var response = await fetch("http://localhost:5000/posts", {
@@ -17,7 +16,7 @@ const CreatePost = () => {
         var result = await response.json();
         if(result.success){
             updateForm({title: "", content: "", category: ""})
-            navigate("/home")
+            refresh();
         }else{
             alert("Error");
         }

@@ -2,14 +2,17 @@ import Post from "../models/Posts.js";
 
 
 export async function getPosts(req, res){
-    const {category} = req.body;
+    const {type} = req.params;
     try {
-        if(category !== "random") return res.status(200).json({
+        var data;
+        if(type !== "random") data = await Post.find({ category: type }).limit(6);
+        else data = await Post.aggregate([{ $sample: { size: 6 } }]);
+        res.status(200).json({
             success: true, 
-            content: await Post.find({ category: 'test' }).toArray()
+            content: data
         })
     } catch (error) {
-        res.status(500).json({success: false, error: err.message})
+        res.status(500).json({success: false, error: error.message})
     }
 }
 

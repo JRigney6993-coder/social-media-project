@@ -8,6 +8,8 @@ import Create from './Components/Create';
 import Home from './Components/home';
 import Navbar from './Components/navbar';
 import CreatePost from './Components/createPost';
+import Profile from './Components/Profile';
+import ErrorPage from './Components/ErrorPage';
 
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -24,8 +26,9 @@ root.render(
           <Route path="/about" Component={About} />
           <Route path="/edit" Component={Edit} />
           <Route path="/create-account" Component={Create}/>
-          <Route path="/profile/:path" Component={Create}/>
+          <Route path="/profile/:path" Component={Profile}/>
           <Route path="/create-post" Component={CreatePost}/>
+          <Route path="*" Component={ErrorPage}/>
         </Routes>
       </div>
     </BrowserRouter>
