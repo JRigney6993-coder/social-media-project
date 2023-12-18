@@ -2,11 +2,11 @@ import Post from "../models/Posts.js";
 
 
 export async function getPosts(req, res){
-    const {type} = req.params;
+    const {type, num} = req.params;
     try {
         var data;
-        if(type !== "random") data = await Post.find({ category: type }).limit(6);
-        else data = await Post.aggregate([{ $sample: { size: 6 } }]);
+        if(type !== "random") data = await Post.find({ category: type }).limit(6 * num);
+        else data = await Post.aggregate([{ $sample: { size: 6 * num } }]);
         res.status(200).json({
             success: true, 
             content: data
@@ -17,8 +17,10 @@ export async function getPosts(req, res){
 }
 export async function getUserPosts(req, res){
     const {user} = req.params;
+    console.log(user);
     try {
         var data = await Post.find({ author: user });
+        console.log(data);
         res.status(200).json({
             success: true, 
             content: data

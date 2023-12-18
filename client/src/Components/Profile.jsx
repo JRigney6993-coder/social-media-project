@@ -1,10 +1,10 @@
 import React, { useEffect, useState }  from 'react';
 import { useLocation } from 'react-router-dom';
 import Posts from './Posts';
+import Navbar from './navbar';
 
 const Profile = () => {
   const [profile, setProfile] = useState({});
-  const [posts, setPosts] = useState([]);
   const location = useLocation().pathname.split('/')[2];
   useEffect(() => {
     async function getProfile(){
@@ -13,16 +13,9 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
       })
-      var userPosts = await fetch(`http://localhost:5000/posts/user/${location}`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: 'include',
-      })
       var result = await fetchData.json();
-      var result2 = await userPosts.json();
-      if(result.success && result2.success){
+      if(result.success){
         setProfile(result.user)
-        setPosts(result2.content);
       }else{
         alert("No longer an account")
       }
@@ -30,7 +23,8 @@ const Profile = () => {
     getProfile();
   }, [])
   return (
-    // <div>{}</div>
+    <>
+    <Navbar/>
     <div className="flex items-center justify-center flex-col min-h-screen border-gray-900/10  text-white font-montserrat">
   <div className="card-container mt-16 ring-gray-300 rounded-lg shadow-md text-gray-400 pt-8 relative w-80 md:w-96 text-center">
     <img className="round border-solid border-cyan-500 rounded-full p-7" src={profile['profile_pic']} alt="user" />
@@ -50,12 +44,8 @@ const Profile = () => {
       </ul>
     </div>
   </div>
-  <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post) => (
-            <Posts key={post.id} post={post}/>
-          ))}
-  </div>
 </div>
+</>
   )
 }
 

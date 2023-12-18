@@ -54,9 +54,8 @@ export async function getEditUser(req, res){
 export async function updateUser(req, res){
     try {
         const {field, value} = req.body;
-        const {user} = req.user;
         const updated_user = await User.findOneAndUpdate(
-            {user_name: user["user_name"]},
+            {"user_name": req.user["user_name"]},
             {$set: {[field]: value}},
             {new: true}
         )

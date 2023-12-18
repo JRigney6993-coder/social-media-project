@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Navbar from './navbar';
 
 const CreatePost = ({}) => {
     const [form, setForm] = useState({title: "", content: "", category: ""});
@@ -19,6 +20,8 @@ const CreatePost = ({}) => {
         }
     }
   return (
+    <>
+    <Navbar />
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
@@ -99,6 +102,7 @@ const CreatePost = ({}) => {
         </div>
       </div>
     </div>
+    </>
     )
 }
 
