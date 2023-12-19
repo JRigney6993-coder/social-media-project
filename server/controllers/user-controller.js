@@ -35,10 +35,35 @@ export async function deleteUser(req, res){
 
 export async function getUser(req, res){
     try{
-        const {user} = req;
-        const account_user = await User.findOne({password: user.password});
-        account_user ? res.status(200).json({success: true}) : res.status(400).json({success: false});
+        const {person} = req.params;
+        const account_user = await User.findOne({user_name: person});
+        account_user ? res.status(200).json({success: true, user: account_user}) : res.status(400).json({success: false});
     }catch(e){
         res.status(500).json({success: false, message: e.message});
+    }
+}
+
+export async function getEditUser(req, res){
+    try {
+        res.status(200).json({success: true, user: req.user});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
+}
+
+export async function updateUser(req, res){
+    try {
+        const {field, value} = req.body;
+        const updated_user = await User.findOneAndUpdate(
+            {"user_name": req.user["user_name"]},
+            {$set: {[field]: value}},
+            {new: true}
+        )
+        if(updated_user)
+            res.status(200).json({success: true, user: updated_user});
+        else
+            res.status(404).json({success: false});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
     }
 }
