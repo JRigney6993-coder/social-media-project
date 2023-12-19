@@ -23,8 +23,7 @@ export default function Home(){
               method: "GET",
               headers: { "Content-Type": "application/json" },
               credentials: 'include',
-          }) || null;
-          if(response === null) alert("Failed")
+          });
           const result = await response.json();
           if(result.success){
             setPosts(result.content);

@@ -16,11 +16,8 @@ export async function getPosts(req, res){
     }
 }
 export async function getUserPosts(req, res){
-    const {user} = req.params;
-    console.log(user);
     try {
-        var data = await Post.find({ author: user });
-        console.log(data);
+        var data = await Post.find({ author: req.user["user_name"] });
         res.status(200).json({
             success: true, 
             content: data

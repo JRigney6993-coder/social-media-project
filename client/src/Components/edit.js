@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import ProfileEdit from "./ProfileEdit";
 import Navbar from "./navbar";
+import EditPosts from "./EditPosts";
 
 export default function Edit(){
     const [form, setForm] = useState({field: "name", value: ""});
+    const [yourPosts, setYourPosts] = useState([]);
     const [refreshFlag, setRefreshFlag] = useState(null);
     const [profile, setProfile] = useState({});
     function updateForm(value) {
@@ -18,9 +20,16 @@ export default function Edit(){
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include',
             })
+            var fetchPosts = await fetch(`http://localhost:5000/posts/userPosts`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+                credentials: 'include',
+            })
             var result = await fetchData.json();
-            if(result.success){
+            var result2 = await fetchPosts.json();
+            if(result.success && result2.success){
                 setProfile(result.user)
+                setYourPosts(result2.content);
                 setRefreshFlag(false);
             }else{
                 alert("No longer an account")
@@ -45,6 +54,7 @@ export default function Edit(){
             alert("Server error")
         }
     }
+    console.log(yourPosts)
     return(
         <>
         <Navbar />
@@ -112,6 +122,13 @@ export default function Edit(){
         </form>
         </div>
       </div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-5 sm:mt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 mb-10">
+                {yourPosts.map((post) => (
+                    <EditPosts key={post.id} post={post}/>
+                ))}
+            </div>
+        </div>
     </div>
     </>
     );

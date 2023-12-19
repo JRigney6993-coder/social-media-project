@@ -7,6 +7,6 @@ router.post("/", makePosts)
 // .put().delete()
 
 router.route("/:type/:num").get(getPosts)
-router.get("/userPosts/:user", getUserPosts)
+router.get("/userPosts", getUserPosts)
 
 export default router
