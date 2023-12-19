@@ -47,10 +47,34 @@ export async function makePosts(req, res){
     }
 }
 
-export function updatePosts(req, res){
-
+export async function updatePosts(req, res){
+    try {
+        const {field, value} = req.body;
+        const {id} = req.params;
+        console.log(id);
+        const updated_user = await Post.findOneAndUpdate(
+            {"_id": id},
+            {$set: {[field]: value}},
+            {new: true}
+        )
+        if(updated_user)
+            res.status(200).json({success: true, user: updated_user});
+        else
+            res.status(404).json({success: false});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
 }
 
-export function deletePosts(req, res){
-
+export async function deletePosts(req, res){
+    try{
+        const {id} = req.params;
+        const updated_user = await Post.findOneAndDelete({"_id": id})
+        if(updated_user)
+            res.status(200).json({success: true, user: updated_user});
+        else
+            res.status(404).json({success: false});
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
 }
