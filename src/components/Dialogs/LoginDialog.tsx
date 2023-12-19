@@ -10,18 +10,20 @@ import { Button } from '@/components/ui/button'
 
 export default function Login() {
   return (
-    <><DialogHeader>
+    <>
+    <form action="">
+    <DialogHeader>
       <DialogTitle>Login</DialogTitle>
       <DialogDescription>
         Forgot your password? <a className="text-purple" href="/">Click here!</a>
       </DialogDescription>
     </DialogHeader><div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
-            Username
+          <Label htmlFor="email" className="text-right">
+            Email
           </Label>
           <Input
-            id="username"
+            id="email"
             className="col-span-3" />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
@@ -35,6 +37,8 @@ export default function Login() {
         </div>
       </div><DialogFooter>
         <Button type="submit">Submit</Button>
-      </DialogFooter></>
+      </DialogFooter>
+      </form>
+      </>
   )
 }
