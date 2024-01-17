@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  parserOptions: {c:\Users\ContrivingDragon\Documents\GitHub\google-searchbar\src ecmaVersion: 'latest', sourceType: 'module' },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
