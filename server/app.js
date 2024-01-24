@@ -32,7 +32,7 @@ app.use('/users', users);
 app.use('/posts', isAuthenticated, posts);
 
 app.get("/", isAuthenticated, (req, res) => {
-  res.status(200).json({success: true});
+  res.status(200).json({success: true, user: req.user});
 })
 app.post("/login", login);
 

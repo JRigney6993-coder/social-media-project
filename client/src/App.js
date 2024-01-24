@@ -3,7 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function App() {
-  const [form, setForm] = useState({email: "", password: ""});
+  const [form, setForm] = useState(
+    {freshman_class1_name: "", freshman_class1_grade: "", 
+    sophomore_class1_name: "", sophomore_class1_grade: "", 
+    junior_class1_name: "", junior_class1_grade: "", 
+    senior_class1_name: "", senior_class1_grade: ""
+  });
   function updateForm(value) {
       return setForm((prev) => {
           return { ...prev, ...value };
