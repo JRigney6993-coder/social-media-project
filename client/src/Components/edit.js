@@ -13,6 +13,8 @@ export default function Edit(){
             return { ...prev, ...value };
         });
     }
+    // debugger;
+    console.log(yourPosts);
     useEffect(() => {
         async function getProfile(){
             var fetchData = await fetch(`http://localhost:5000/users`, {
@@ -29,7 +31,7 @@ export default function Edit(){
             var result2 = await fetchPosts.json();
             if(result.success && result2.success){
                 setProfile(result.user)
-                setYourPosts(result2.content);
+                setYourPost(result2.content);
                 setRefreshFlag(false);
             }else{
                 alert("No longer an account")
@@ -54,6 +56,7 @@ export default function Edit(){
             alert("Server error")
         }
     }
+    // debugger;
     console.log(yourPosts)
     return(
         <>
